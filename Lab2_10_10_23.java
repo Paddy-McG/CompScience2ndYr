@@ -24,8 +24,15 @@ public class Lab2_10_10_23
         double d1 = splitingUpFirst(s1);
         double d2 = splittingSecTime(s1);
 
-        System.out.println(addingDigs(d1));
-        System.out.println(d2);
+        int num = addingDigs(d1) + multDig(d2);
+        if(num % 10 == 0)
+        {
+            System.out.println(num);
+            System.out.println("The number you entered is VALID");
+        } else {
+            System.out.println(num);
+            System.out.println("The number you entered is NOT VALID");
+        }
     }
 
     public static double splitingUpFirst(String s1)
@@ -86,7 +93,30 @@ public class Lab2_10_10_23
             num1 += d1 % 10;
             d1 /= 10;
         }while(d1 > 0);
-
+        System.out.println(num1);
+        return num1;
+    }
+    
+    public static int multDig(double d1)
+    {
+        int num1 = 0;
+        System.out.println(d1);
+        int num3 = (int)Math.round(d1);
+        double tot = 0;
+        do{
+            tot = (num3 % 10) * 2;
+            System.out.println(tot);
+            if(tot >= 10)
+            {
+                num1 += tot - 9;
+                System.out.println(num1);
+            } else {
+                num1 += tot;
+                System.out.println(num1);
+            }
+            num3 /= 10;
+        }while(num3 > 0);
+        System.out.println(num1);
         return num1;
     }
 }

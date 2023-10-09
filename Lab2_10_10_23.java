@@ -19,10 +19,12 @@ public class Lab2_10_10_23
         } while (len < 4 || len > 30);
         sc.close();
 
+        //Sending the string off to be split into 2 doubles that we can work with
+
         double d1 = splitingUpFirst(s1);
         double d2 = splittingSecTime(s1);
 
-        System.out.println(d1);
+        System.out.println(addingDigs(d1));
         System.out.println(d2);
     }
 
@@ -50,6 +52,7 @@ public class Lab2_10_10_23
         d1 = Double.parseDouble(s2);
         return d1;
     }
+
     public static double splittingSecTime(String s1)
     {
         int len = s1.length();
@@ -74,5 +77,16 @@ public class Lab2_10_10_23
 
         d1 = Double.parseDouble(s2);
         return d1;
+    }
+
+    public static int addingDigs(double d1)
+    {
+        int num1 = 0;
+        do{
+            num1 += d1 % 10;
+            d1 /= 10;
+        }while(d1 > 0);
+
+        return num1;
     }
 }

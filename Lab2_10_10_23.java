@@ -19,104 +19,42 @@ public class Lab2_10_10_23
         } while (len < 4 || len > 30);
         sc.close();
 
-        //Sending the string off to be split into 2 doubles that we can work with
-
-        double d1 = splitingUpFirst(s1);
-        double d2 = splittingSecTime(s1);
-
-        int num = addingDigs(d1) + multDig(d2);
-        if(num % 10 == 0)
+        if(check(s1))
         {
-            System.out.println(num);
             System.out.println("The number you entered is VALID");
-        } else {
-            System.out.println(num);
+        } else
+        {
             System.out.println("The number you entered is NOT VALID");
         }
     }
 
-    public static double splitingUpFirst(String s1)
+    public static boolean check(String s1)
     {
-        int len = s1.length();
-        double d1;
-        String s2 = "";
+        int tot = 0;
+        int num = 0;
 
-        if(len % 2 == 0)
+        for(int i = s1.length()-1; i >= 0; i--)
         {
-            for(int i = 1; i < (s1.length()); i++)
+            num = Integer.parseInt(s1.charAt(i) + "");
+
+            if(i % 2 != 0)
             {
-                s2 += s1.substring(i, i+1);
-                i++;
+                num *= 2;
+                if(num >= 10)
+                {
+                    num -= 9;
+                }
             }
-        } else {
-            for(int i = 0; i < (s1.length()); i++)
-            {
-                s2 += s1.substring(i, i+1);
-                i++;
-            }
+            tot += num;
         }
 
-        d1 = Double.parseDouble(s2);
-        return d1;
-    }
-
-    public static double splittingSecTime(String s1)
-    {
-        int len = s1.length();
-        double d1;
-        String s2 = "";
-
-        if(len % 2 == 0)
+        if(tot % 10 == 0)
         {
-         for(int i = 0; i < (s1.length()); i++)
-            {
-                s2 += s1.substring(i, i+1);
-                i++;
-            }   
-        } else {
-            
-            for(int i = 1; i < (s1.length()); i++)
-            {
-                s2 += s1.substring(i, i+1);
-                i++;
-            }
-        }
-
-        d1 = Double.parseDouble(s2);
-        return d1;
-    }
-
-    public static int addingDigs(double d1)
-    {
-        int num1 = 0;
-        do{
-            num1 += d1 % 10;
-            d1 /= 10;
-        }while(d1 > 0);
-        System.out.println(num1);
-        return num1;
-    }
-    
-    public static int multDig(double d1)
-    {
-        int num1 = 0;
-        System.out.println(d1);
-        int num3 = (int)Math.round(d1);
-        double tot = 0;
-        do{
-            tot = (num3 % 10) * 2;
             System.out.println(tot);
-            if(tot >= 10)
-            {
-                num1 += tot - 9;
-                System.out.println(num1);
-            } else {
-                num1 += tot;
-                System.out.println(num1);
-            }
-            num3 /= 10;
-        }while(num3 > 0);
-        System.out.println(num1);
-        return num1;
+            return true;
+        } else {
+            System.out.println(tot);
+            return false;
+        }
     }
 }

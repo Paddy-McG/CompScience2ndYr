@@ -28,6 +28,7 @@ public class Lab2_10_10_23
         }
     }
 
+
     public static boolean check(String s1)
     {
         int tot = 0;
@@ -37,12 +38,25 @@ public class Lab2_10_10_23
         {
             num = Integer.parseInt(s1.charAt(i) + "");
 
-            if(i % 2 != 0)
+            if(s1.length() % 2 != 0)
             {
-                num *= 2;
-                if(num >= 10)
-                {
-                    num -= 9;
+                if(i % 2 != 0)
+                {   
+                    num *= 2;
+                    if(num >= 10)
+                    {
+                        num -= 9;
+                    }
+                }
+            } else 
+            {
+                if(i % 2 == 0)
+                {   
+                    num *= 2;
+                    if(num >= 10)
+                    {
+                        num -= 9;
+                    }
                 }
             }
             tot += num;
@@ -50,10 +64,8 @@ public class Lab2_10_10_23
 
         if(tot % 10 == 0)
         {
-            System.out.println(tot);
             return true;
         } else {
-            System.out.println(tot);
             return false;
         }
     }

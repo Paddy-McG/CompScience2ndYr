@@ -1,5 +1,6 @@
 import java.util.*;
 
+//Takes in a string of a students attendence and gives back if the student has passed the module or if he has failed 
 public class Lab2part2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
